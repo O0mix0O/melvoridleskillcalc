@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import experienceData from '../experience/experienceTable';
-import numToLevel from './numToLevel'; 
 import fishingData from '../skills/fishing/fishingData';
+import getAvailableActions from './getAvailableActions';
+import getActionsRequired from './getActionsRequired';
 
 const Calculator = () => {
   const [currentLevel, setCurrentLevel] = useState('');
@@ -32,7 +33,9 @@ const Calculator = () => {
 
     // Perform the fish-to-catch calculation
     try {
-      const data = numToLevel(currentLevelInt, desiredLevelInt, fishingData);
+      const availableActions = getAvailableActions(currentLevelInt, fishingData);
+      const data = getActionsRequired(currentLevelInt, desiredLevelInt, availableActions);
+  
       if (data.error) {
         setError(data.error);
         setActionsRequired(null);

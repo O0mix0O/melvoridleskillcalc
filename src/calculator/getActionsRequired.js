@@ -17,6 +17,7 @@ const getActionsRequired = (currentLevel, desiredLevel, skillData) => {
   const targetXp = xpToLevel(desiredLevel).XP;
   const xpNeeded = targetXp - currentXp;
 
+
   if (xpNeeded <= 0) {
     return { error: 'Target level must require more XP than the current level.' };
   }
