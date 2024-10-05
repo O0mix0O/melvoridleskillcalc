@@ -38,6 +38,7 @@ All features with the `[UI]` identifier will focus on improving functionality (n
 - **v0.16** - `[UI]` Implement a more functional UI (similar to MI's sidebar)
 - **v0.17** - `[UI]` Add icons for creations (e.g., shrimp, herring, air rune, etc.)
 - **v0.18** - `[UI]` Add icons for recipes (e.g., potato for basic soup, etc.)
+- **v0.19** - `[UI]` Add roadmap to site
 
 ---
 
