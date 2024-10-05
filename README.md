@@ -54,23 +54,28 @@ Once all Alpha features are implemented:
 ## v1.0 Release
 
 - Official launch of the calculator
-- Focus on improving flexibility and customization in calculations
 
 ---
 
-## v2.0 - Equipment Upgrades
+## v2.0 - Recipe Costs
+
+- Update the calculator to display the cost of items that can only be purchased (e.g. summoning shards)
+
+---
+
+## v3.0 - Equipment Upgrades
 
 - Update the calculator to reflect changes due to equipment upgrades (e.g., Axe, Pickaxe, Fishing Rod)
 
 ---
 
-## v3.0 - Skillcapes
+## v4.0 - Skillcapes
 
 - Add support for skillcape benefits and their impact on calculations
 
 ---
 
-## v4.0 - Beyond the Horizon...
+## v5.0 - Beyond the Horizon...
 
 - Continue learning and playing as a new player
 - Identify additional improvements or features to implement in future updates
