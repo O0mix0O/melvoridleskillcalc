@@ -1,4 +1,4 @@
-const experienceData = [
+const experienceTable = [
     { Level: 1, XP: 0, Difference: 0 },
     { Level: 2, XP: 83, Difference: 83 },
     { Level: 3, XP: 174, Difference: 91 },
@@ -121,4 +121,4 @@ const experienceData = [
     { Level: 120, XP: 104273167, Difference: 9830430 }
 ]
 
-export default experienceData;
+export default experienceTable;
