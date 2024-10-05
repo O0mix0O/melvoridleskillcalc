@@ -6,16 +6,42 @@ const Calculator = () => {
   const [currentLevel, setCurrentLevel] = useState('');
   const [desiredLevel, setDesiredLevel] = useState('');
   const [actionsRequired, setActionsRequired] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleCalculate = () => {
-    const currLevelData = experienceData.find(l => l.Level === parseInt(currentLevel));
-    const desLevelData = experienceData.find(l => l.Level === parseInt(desiredLevel));
+    const currentLevelInt = parseInt(currentLevel);
+    const desiredLevelInt = parseInt(desiredLevel);
 
-    if (currLevelData && desLevelData) {
-      const fishingData = fishToCatch(parseInt(currentLevel), parseInt(desiredLevel));
-      setActionsRequired(fishingData);
-    } else {
-      alert('Please make sure all inputs are valid.');
+    // Input validation before calculation
+    if (Number.isNaN(currentLevelInt) || Number.isNaN(desiredLevelInt) || currentLevelInt <= 0 || desiredLevelInt <= currentLevelInt) {
+      setError('Please enter valid level values. Desired level must be higher than the current level.');
+      setActionsRequired(null);
+      return;
+    }
+
+    // Finding level data from experienceTable
+    const currLevelData = experienceData.find(l => l.Level === currentLevelInt);
+    const desLevelData = experienceData.find(l => l.Level === desiredLevelInt);
+
+    if (!currLevelData || !desLevelData) {
+      setError('Invalid level range. Please enter levels between 1 and 120.');
+      setActionsRequired(null);
+      return;
+    }
+
+    // Perform the fish-to-catch calculation
+    try {
+      const fishingData = fishToCatch(currentLevelInt, desiredLevelInt);
+      if (fishingData.error) {
+        setError(fishingData.error);
+        setActionsRequired(null);
+      } else {
+        setActionsRequired(fishingData);
+        setError(null);
+      }
+    } catch (e) {
+      setError('An error occurred during the calculation. Please try again.');
+      setActionsRequired(null);
     }
   };
 
@@ -32,6 +58,7 @@ const Calculator = () => {
             onChange={(e) => setCurrentLevel(e.target.value)} 
             min="1" 
             max="120"
+            placeholder="Enter current level"
           />
         </label>
       </div>
@@ -45,11 +72,19 @@ const Calculator = () => {
             onChange={(e) => setDesiredLevel(e.target.value)} 
             min="2" 
             max="120"
+            placeholder="Enter desired level"
           />
         </label>
       </div>
 
-      <button onClick={handleCalculate}>Calculate</button>
+      <button 
+        onClick={handleCalculate} 
+        disabled={!currentLevel || !desiredLevel || parseInt(desiredLevel) <= parseInt(currentLevel)}
+      >
+        Calculate
+      </button>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {actionsRequired && (
         <div>
