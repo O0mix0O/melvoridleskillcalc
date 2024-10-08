@@ -9,6 +9,8 @@ const Calculator = () => {
   const [desiredLevel, setDesiredLevel] = useState('');
   const [actionsRequired, setActionsRequired] = useState(null);
   const [error, setError] = useState(null);
+  const [xpForLevel, setXpForLevel] = useState(null);
+  const [xpToLevel, setXpToLevel] = useState(null);
 
   const handleCalculate = () => {
     const currentLevelInt = parseInt(currentLevel);
@@ -35,7 +37,7 @@ const Calculator = () => {
     try {
       const availableActions = getAvailableActions(currentLevelInt, fishingData);
       const data = getActionsRequired(currentLevelInt, desiredLevelInt, availableActions);
-  
+
       if (data.error) {
         setError(data.error);
         setActionsRequired(null);
@@ -49,40 +51,107 @@ const Calculator = () => {
     }
   };
 
+  const handleLevelChange = (e, type) => {
+    const level = e.target.value;
+    const parsedInt = parseInt(level);
+
+    const levelData = experienceData.find(l => l.Level === parsedInt);
+
+    if (type === 'current') {
+      setCurrentLevel(parsedInt);
+      setXpForLevel(levelData ? levelData.XP : null);
+    } else if (type === 'desired') {
+      setDesiredLevel(parsedInt);
+      setXpToLevel(levelData ? levelData.XP : null);
+    }
+  };
+
+
+  const handleXpChange = (e, type) => {
+    const xp = parseInt(e.target.value);
+
+    // Find the highest level where XP is less than or equal to the entered XP amount
+    const matchingLevelData = experienceData.reduce((prev, curr) => {
+      return curr.XP <= xp ? curr : prev;
+    });
+
+    if (matchingLevelData) {
+      if (type === 'current') {
+        setCurrentLevel(matchingLevelData.Level); // Update the current level
+      } else if (type === 'desired') {
+        setDesiredLevel(matchingLevelData.Level); // Update the desired level
+      }
+    } else {
+      console.log("Invalid XP");
+      if (type === 'current') {
+        setCurrentLevel(null); // If no valid level found, don't display any level
+      } else if (type === 'desired') {
+        setDesiredLevel(null); // If no valid level found, don't display any level
+      }
+    }
+  };
+
+
   return (
     <div>
       <h1>XP Calculator</h1>
-      
+
       <div>
         <label>
           Current Level:
-          <input 
-            type="number" 
-            value={currentLevel} 
-            onChange={(e) => setCurrentLevel(e.target.value)} 
-            min="1" 
+          <input
+            type="number"
+            value={currentLevel}
+            onChange={(e) => handleLevelChange(e, 'current')}
+            min="1"
             max="120"
             placeholder="Enter current level"
           />
         </label>
+        <div>
+          <label>
+            Current XP:
+            <input
+              type="number"
+              value={xpForLevel}
+              onChange={(e) => handleXpChange(e, 'current')}
+              min="1"
+              max="120"
+              placeholder="Enter current XP"
+            />
+          </label>
+        </div>
       </div>
 
       <div>
         <label>
           Desired Level:
-          <input 
-            type="number" 
-            value={desiredLevel} 
-            onChange={(e) => setDesiredLevel(e.target.value)} 
-            min="2" 
+          <input
+            type="number"
+            value={desiredLevel}
+            onChange={(e) => handleLevelChange(e, 'desired')}
+            min="2"
             max="120"
             placeholder="Enter desired level"
           />
         </label>
+        <div>
+          <label>
+            Desired XP:
+            <input
+              type="number"
+              value={xpToLevel}
+              onChange={(e) => handleXpChange(e, 'desired')}
+              min="1"
+              max="120"
+              placeholder="Enter desired XP"
+            />
+          </label>
+        </div>
       </div>
 
-      <button 
-        onClick={handleCalculate} 
+      <button
+        onClick={handleCalculate}
         disabled={!currentLevel || !desiredLevel || parseInt(desiredLevel) <= parseInt(currentLevel)}
       >
         Calculate

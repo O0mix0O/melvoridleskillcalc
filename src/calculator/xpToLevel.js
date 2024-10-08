@@ -11,7 +11,7 @@ const xpToLevel = (level) => {
 
     // Use Map for faster lookups, or fallback to the original array search if you prefer not to use Map
     const levelData = experienceMap.get(level);
-
+    
     if (!levelData) {
         return { Level: null, XP: 0 };  // Return null Level for clarity
     }

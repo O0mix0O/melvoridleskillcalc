@@ -19,10 +19,10 @@ All features with the `[UI]` identifier will focus on improving functionality (n
 
 ### Version Breakdown
 
-- **v0.1** - `[skill]` Fishing
-- **v0.2** - `[UI]` Add skill selector in anticipation of future skill releases
-- **v0.3** - `[skill]` Firemaking
-- **v0.4** - `[UI]` Add ability to enter by xp amount +/ ;eve;
+- **v0.1** - ✅ `[skill]` Fishing
+- **v0.2** - ✅ `[UI]` Add ability to enter by xp amount +/ ;eve;
+- **v0.3** - `[UI]` Add skill selector in anticipation of future skill releases
+- **v0.4** - `[skill]` Firemaking
 - **v0.5** - `[skill]` Woodcutting
 - **v0.6** - `[skill]` Cooking
 - **v0.7** - `[skill]` Mining
