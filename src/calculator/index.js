@@ -3,6 +3,8 @@ import experienceData from '../experience/experienceTable';
 import fishingData from '../skills/fishing/fishingData';
 import getAvailableActions from './getAvailableActions';
 import getActionsRequired from './getActionsRequired';
+import SimpleTestComponent from '../skills/firemaking/firemakingCalculator';
+import SimpleTestComponenta from '../skills/fishing/fishingCalculator';
 
 const Calculator = () => {
   const [currentLevel, setCurrentLevel] = useState('');
@@ -11,6 +13,7 @@ const Calculator = () => {
   const [error, setError] = useState(null);
   const [xpForLevel, setXpForLevel] = useState(null);
   const [xpToLevel, setXpToLevel] = useState(null);
+  const [selectedSkillSalc, setSkillCalc] = useState(null);
 
   const handleCalculate = () => {
     const currentLevelInt = parseInt(currentLevel);
@@ -91,12 +94,31 @@ const Calculator = () => {
     }
   };
 
+  const selectSkillCalc = (e, type) => {
+    setSkillCalc(type);
+  };
 
   return (
     <div>
+
       <h1>XP Calculator</h1>
 
       <div>
+        <button type='button' onClick={(e) => selectSkillCalc(e, 'fishing')} >
+          Fishing
+        </button>
+
+        <button type='button' onClick={(e) => selectSkillCalc(e, 'firemaking')} >
+          Firemaking
+        </button>
+
+<div>
+  {selectedSkillSalc == 'firemaking' && <SimpleTestComponent inputText="fi" /> }
+{selectedSkillSalc == 'fishing' && <SimpleTestComponenta inputText="fm" /> }
+
+</div>
+
+
         <label>
           Current Level:
           <input
@@ -108,7 +130,6 @@ const Calculator = () => {
             placeholder="Enter current level"
           />
         </label>
-        <div>
           <label>
             Current XP:
             <input
@@ -120,7 +141,6 @@ const Calculator = () => {
               placeholder="Enter current XP"
             />
           </label>
-        </div>
       </div>
 
       <div>
@@ -135,7 +155,6 @@ const Calculator = () => {
             placeholder="Enter desired level"
           />
         </label>
-        <div>
           <label>
             Desired XP:
             <input
@@ -147,7 +166,6 @@ const Calculator = () => {
               placeholder="Enter desired XP"
             />
           </label>
-        </div>
       </div>
 
       <button
