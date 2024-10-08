@@ -21,24 +21,25 @@ All features with the `[UI]` identifier will focus on improving functionality (n
 
 - **v0.1** - `[skill]` Fishing
 - **v0.2** - `[UI]` Add skill selector in anticipation of future skill releases
-- **v0.2** - `[skill]` Woodcutting
 - **v0.3** - `[skill]` Firemaking
-- **v0.4** - `[skill]` Cooking
-- **v0.5** - `[skill]` Mining
-- **v0.6** - `[skill]` Smithing
-- **v0.7** - `[skill]` Thieving
-- **v0.8** - `[skill]` Farming
-- **v0.9** - `[skill]` Fletching
-- **v0.10** - `[skill]` Crafting
-- **v0.11** - `[skill]` Runecrafting
-- **v0.12** - `[skill]` Herblore
-- **v0.13** - `[skill]` Agility
-- **v0.14** - `[skill]` Summoning
-- **v0.15** - `[skill]` Astrology
-- **v0.16** - `[UI]` Implement a more functional UI (similar to MI's sidebar)
-- **v0.17** - `[UI]` Add icons for creations (e.g., shrimp, herring, air rune, etc.)
-- **v0.18** - `[UI]` Add icons for recipes (e.g., potato for basic soup, etc.)
-- **v0.19** - `[UI]` Add roadmap to site
+- **v0.4** - `[UI]` Add ability to enter by xp amount +/ ;eve;
+- **v0.5** - `[skill]` Woodcutting
+- **v0.6** - `[skill]` Cooking
+- **v0.7** - `[skill]` Mining
+- **v0.8** - `[skill]` Smithing
+- **v0.9** - `[skill]` Thieving
+- **v0.10** - `[skill]` Farming
+- **v0.11** - `[skill]` Fletching
+- **v0.12** - `[skill]` Crafting
+- **v0.13** - `[skill]` Runecrafting
+- **v0.14** - `[skill]` Herblore
+- **v0.15** - `[skill]` Agility
+- **v0.16** - `[skill]` Summoning
+- **v0.17** - `[skill]` Astrology
+- **v0.18** - `[UI]` Implement a more functional UI (similar to MI's sidebar)
+- **v0.19** - `[UI]` Add icons for creations (e.g., shrimp, herring, air rune, etc.)
+- **v0.20** - `[UI]` Add icons for recipes (e.g., potato for basic soup, etc.)
+- **v0.21** - `[UI]` Add roadmap to site
 
 ---
 
